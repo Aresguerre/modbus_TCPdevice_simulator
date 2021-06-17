@@ -13,8 +13,6 @@ Testing against sunspec2 client
 ```
 pipenv install pysunspec2
 
-pipenv install pyserial
-
 pipenv shell
 
 python
