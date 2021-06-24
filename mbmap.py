@@ -36,7 +36,7 @@ MBMAP_REGS_TYPE_F64 = 'f64'
 MBMAP_REGS_TYPE_STRING = 'string'
 MBMAP_REGS_TYPE_HEX_STRING = 'hexstr'
 
-MBMAP_BASE_ADDR_DEFAULT = 40000
+MBMAP_BASE_ADDR_DEFAULT = 30000
 
 func_value = {MBMAP_FUNC_INPUT: 4, MBMAP_FUNC_HOLDING: 3}
 func_name = {4: MBMAP_FUNC_INPUT, 3: MBMAP_FUNC_HOLDING}
@@ -111,7 +111,7 @@ class ModbusMap(object):
             if value is None:
                 raise ModbusMapError('Unsupported function: %s' % (func))
             self.func = value
-            self.base_addr = root.attrib.get(MBMAP_ADDR, 40000)
+            self.base_addr = root.attrib.get(MBMAP_ADDR, MBMAP_BASE_ADDR_DEFAULT)
 
             for r in root.findall(MBMAP_REGS):
                 offset = r.attrib.get(MBMAP_REGS_OFFSET)

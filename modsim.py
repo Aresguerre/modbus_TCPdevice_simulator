@@ -9,6 +9,7 @@ import modbus_tk.modbus_rtu as modbus_rtu
 from modbus_tk.simulator import *
 import mbmap
 from optparse import OptionParser
+from math import floor
 
 class ModSimError(Exception):
     pass
@@ -103,7 +104,7 @@ if __name__ == "__main__":
         sys.exit(1)
 
     if sim.mode == 'tcp':
-        print('Initialized modbus %s simulator: addr = %s  port = %s  slave id = %s  base address = %s' % (options.mode,socket.gethostbyname(socket.gethostname()), options.port, str(options.id), str(modbus_map.base_addr)))
+        print('Initialized modbus %s simulator: addr = %s  port = %s  slave id = %s  base address = %s' % (options.mode,socket.gethostbyname('localhost'), options.port, str(options.id), str(modbus_map.base_addr)))
     else:
         print('Initialized modbus simulator to unknown mode: %s' % (sim.mode))
     
@@ -111,22 +112,24 @@ if __name__ == "__main__":
     print('Modbus map loaded from %s' % args[0])
     slave = sim.server.add_slave(options.id)
     for regs in modbus_map.regs:
+        print(regs.offset)
         slave.add_block('regs_' + str(regs.offset), modbus_map.func, (modbus_map.base_addr + regs.offset), int(regs.count))
     for regs in modbus_map.regs:
         values = []
         print(regs.count)
-        for i in range(0, int(regs.count)):
+        for i in range(0, int(floor(regs.count))):
             index = i * 2
             v = struct.unpack('>H', regs.data[index:(index + 2)])
             values.append(v[0])
         # print values
         slave.set_values('regs_' + str(regs.offset), (modbus_map.base_addr + regs.offset), values)
+        #print(slave)
         print('Added modbus map block:  address = %d  count = %d' % ((modbus_map.base_addr + regs.offset), regs.count))
 
     try:
         LOGGER.info("'quit' for closing the simulator")
         sim.start()
-        
+
     except Exception as e:
         print(e)
             
