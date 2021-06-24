@@ -1,11 +1,11 @@
 Building and running container
 
 ```
-git clone https://github.com/Aresguerre/modbus_TCPdevice_simulator.git
+git clone -b feature/modbus_server_new_data https://github.com/Aresguerre/modbus_TCPdevice_simulator.git
 
-docker build -t device_sim .
+docker build -t device_sim:latest .
 
-docker run -p 8502:8502 device_sim
+docker run -p 8502:8502 device_sim:latest
 ```
 
 Testing against sunspec2 client
