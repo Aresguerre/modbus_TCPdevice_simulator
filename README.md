@@ -5,7 +5,7 @@ git clone -b feature/modbus_server_new_data https://github.com/Aresguerre/modbus
 
 docker build -t device_sim:latest .
 
-docker run -p 8502:8502 device_sim:latest
+docker run -p 8502:8502 -it device_sim:latest
 ```
 
 Testing against sunspec2 client
