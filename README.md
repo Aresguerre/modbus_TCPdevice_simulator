@@ -17,3 +17,10 @@ pipenv shell
 
 python3 client/client.py
 ```
+
+Send command to Simulator
+```
+# slave_id regs_'offset' address value
+
+set_values 1 regs_201 30201 35
+```
