@@ -22,5 +22,5 @@ Send command to Simulator
 ```
 # slave_id regs_'offset' address value
 
-set_values 1 regs_201 30201 35
+python3 simRPCclient.py
 ```
