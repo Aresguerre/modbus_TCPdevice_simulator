@@ -1,0 +1,17 @@
+<!-- Fronius inverter conrol map -->
+<mbmap>
+  <regs offset='775'>00 00 00 01</regs>
+  <regs offset='843'>00 00 00 02</regs> <!-- S32 -->
+  <regs             >00 00 00 03</regs> <!-- U32 -->
+  <regs offset='865'>00 00 00 04</regs> <!-- S32 -->
+  <regs             >00 00 00 05</regs> <!-- S32 -->
+  <!-- common model -->
+  <regs offset='10210'>00 00 01 2F</regs> <!-- U32 303:off  1079:external settings -->
+  <regs offset='11193'>09 CA</regs> <!-- U32 2506:maintain values   2507:fallback values -->
+  <regs               >00 01</regs> <!-- U32  timeout-->
+  <regs offset='13090'>00 00 00 00</regs> <!-- U32 GridGuard -->
+  <regs offset='14029'>00 00 01 2F</regs> <!-- U32  303:off 308:on -->
+  <regs               >00 00 00 01</regs> <!-- U32  -->
+  <regs               >00 00 00 01</regs> <!-- U32  -->
+  <regs offset='14037'>00 00 00 00</regs> <!-- S32 fallback vals-->
+</mbmap> 

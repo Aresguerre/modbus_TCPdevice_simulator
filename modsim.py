@@ -5,11 +5,11 @@ import struct
 import socket
 import modbus_tk
 import modbus_tk.modbus_tcp as modbus_tcp
-import modbus_tk.modbus_rtu as modbus_rtu
-from modbus_tk.simulator import *
+from simulator import *
 import mbmap
 from optparse import OptionParser
 from math import floor
+
 
 class ModSimError(Exception):
     pass
